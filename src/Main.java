@@ -33,8 +33,5 @@ public class Main {
             Toy toy = (Toy) queueOfToys.poll();
             System.out.println(toy.getId() + " " + toy.getWeight() + " " + toy.getName());
         }
-
-
-
     }
 }
