@@ -1,22 +1,48 @@
-public class Toy {
+import java.util.Objects;
 
-    protected int id;
-    protected String name;
-    protected int weight;
+public class Toy implements Comparable<Toy> {
 
+    private int Id;
+    private String Name;
+    private int weight;
 
-    public Toy(int id, String name, int weight) {
-        this.id = id;
-        this.name = name;
+    public Toy(int Id, String Name, int weight) {
+        this.Id = Id;
+        this.Name = Name;
         this.weight = weight;
     }
+
     public int getId() {
-        return id;
+        return Id;
     }
+
     public String getName() {
-        return name;
+        return Name;
     }
+
     public int getWeight() {
         return weight;
+    }
+
+    public String getInfo() {
+        return String.format("Id: %d, Name: %s", Id, Name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Toy toy = (Toy) o;
+        return Name.equals(toy.Name);
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(Name);
+//    }
+
+    @Override
+    public int compareTo(Toy o) {
+        return Integer.compare(this.weight, o.weight);
     }
 }
