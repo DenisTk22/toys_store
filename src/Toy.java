@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Toy implements Comparable<Toy> {
 
     private int Id;
@@ -35,11 +33,6 @@ public class Toy implements Comparable<Toy> {
         Toy toy = (Toy) o;
         return Name.equals(toy.Name);
     }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(Name);
-//    }
 
     @Override
     public int compareTo(Toy o) {

@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Processor {
-    String resultFile = "result.txt";
+    String resultFile = "result.csv";
     private static ArrayList<Toy> toys = new ArrayList<>();
     private static PriorityQueue<Toy> prizes = new PriorityQueue<>();
     private static int idCount = 1;
@@ -31,28 +31,18 @@ public class Processor {
                 }
                 else {
                     Toy toy = new Toy(idCount, name, weight);
-                    if (!toys.contains(toy)) { //if (!toys.contains(toy) || toys.size() == 0)
-
+                    if (!toys.contains(toy)) {
                         toys.add(toy);
-                        System.out.println("The toy is added");
+                        System.out.println("The toy is added\n");
                         idCount++;
                     } else {
-                        System.out.println("The toy already exist.");
+                        System.out.println("The toy already exist.\n");
                     }
                 }
             } else {
-                System.out.println("Input a digit!");
+                System.out.println("Input a digit!\n");
             }
             break;
-        }
-    }
-
-    private static boolean isDigit(String s) throws NumberFormatException {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
         }
     }
 
@@ -61,8 +51,8 @@ public class Processor {
             Random rnd = new Random();
             for (Toy toy : toys) {
                 for (int i = 0; i < toy.getWeight(); i++) {
-                    Toy temp = new Toy(toy.getId(), toy.getName(), rnd.nextInt(1, 10));
-                    prizes.add(temp);
+                    Toy toyToMix = new Toy(toy.getId(), toy.getName(), rnd.nextInt(1, 10));
+                    prizes.add(toyToMix);
                 }
             }
         }
@@ -72,16 +62,25 @@ public class Processor {
     public void lottery() {
         if (toys.size() > 1) {
             Toy prize = getPrize();
-            System.out.println("Prize: " + prize.getName());
+            System.out.println("winning: " + prize.getName());
             saveResult(prize.getInfo());
         } else {
             System.out.println("Please add more toys.\n");
         }
     }
 
-    public void ten_times_lottery() {
+    public void tenTimesLottery() {
         for (int i = 0; i < 10; i++) {
             lottery();
+        }
+    }
+
+    private static boolean isDigit(String s) throws NumberFormatException {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 

@@ -8,25 +8,25 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Processor proce = new Processor();
-        Scanner sc = new Scanner(System.in);
+        Processor shop = new Processor();
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("""
-                    Shop of toys (choose a digit):
-                    1 : Add a new toy
-                    2 : Start a lottery
-                    3 : 10 times lottery!!!
-                    4 : Exit
-                    >\s""");
-            var selection = sc.next();
+                \nChoose one of the options bellow:
+                Type 1 to add a new toy.
+                Type 2 to start a lottery.
+                Type 3 to start lottery 10 times!!!
+                Type 4 to exit.
+                >>>\s""");
+            String selection = scanner.next();
             switch (selection) {
-                case "1" -> proce.addToy();
-                case "2" -> proce.lottery();
-                case "3" -> proce.ten_times_lottery();
+                case "1" -> shop.addToy();
+                case "2" -> shop.lottery();
+                case "3" -> shop.tenTimesLottery();
                 case "4" -> {
-                    System.exit(0);
+                    return;
                 }
-                default -> System.out.println("Incorrect selection. Try again.");
+                default -> System.out.println("Type correctly. See a menu!\n");
             }
         }
     }
